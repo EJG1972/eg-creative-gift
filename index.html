@@ -681,30 +681,29 @@
   <style>
     #homeBtn {
       position: fixed;
-      bottom: 1.8rem;
-      right: 1.8rem;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
       background: var(--gold);
       border: none;
       color: var(--black);
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.58rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 0.7rem 1.4rem;
+      padding: 0.85rem 2rem;
       border-radius: 50px;
       cursor: pointer;
       z-index: 9000;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-      box-shadow: 0 4px 20px rgba(201,168,76,0.4);
-      transition: background 0.3s, transform 0.2s;
+      gap: 0.5rem;
+      box-shadow: 0 4px 24px rgba(201,168,76,0.5);
+      white-space: nowrap;
+      transition: background 0.3s;
     }
-    #homeBtn:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-    }
+    #homeBtn:hover { background: var(--gold-light); }
   </style>
 
 </body>
