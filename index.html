@@ -673,36 +673,37 @@
     <p>© 2026 Mari Nalu &nbsp;·&nbsp; All rights reserved</p>
   </footer>
 
-  <!-- HOME BUTTON — always visible -->
+  <!-- HOME BUTTON — always visible on every section -->
   <button id="homeBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Go to Home">
-    &#8593; Home
+    &#8593; Mari Nalu
   </button>
 
   <style>
     #homeBtn {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: var(--black);
-      border: 1px solid var(--gold);
-      color: var(--gold);
+      bottom: 1.8rem;
+      right: 1.8rem;
+      background: var(--gold);
+      border: none;
+      color: var(--black);
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 500;
+      font-size: 0.58rem;
+      font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 0.6rem 1.2rem;
+      padding: 0.7rem 1.4rem;
       border-radius: 50px;
       cursor: pointer;
-      z-index: 500;
+      z-index: 9000;
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      transition: background 0.3s, color 0.3s;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+      transition: background 0.3s, transform 0.2s;
     }
     #homeBtn:hover {
-      background: var(--gold);
-      color: var(--black);
+      background: var(--gold-light);
+      transform: translateY(-2px);
     }
   </style>
 
