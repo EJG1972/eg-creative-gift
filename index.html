@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Mari Nalu — Art · Perfume · Music</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black:      #080706;
+      --charcoal:   #121110;
+      --gold:       #C9A84C;
+      --gold-light: #e8cc84;
+      --gold-dim:   rgba(201, 168, 76, 0.22);
+      --cream:      #F5F0E8;
+      --cream-dim:  rgba(245, 240, 232, 0.55);
+      --cream-faint:rgba(245, 240, 232, 0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--black);
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* subtle grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.022;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.6rem 6%;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 5%;
+    }
+
+    .moon {
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 42%,
+        #f0ece4 0%,
+        #d4cec4 28%,
+        #9a938a 58%,
+        #4a4540 78%,
+        transparent 100%);
+      opacity: 0.11;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -52%);
+      filter: blur(2px);
+      animation: moonBreath 9s ease-in-out infinite alternate;
+    }
+
+    @keyframes moonBreath {
+      from { opacity: 0.09; transform: translate(-50%, -52%) scale(1); }
+      to   { opacity: 0.15; transform: translate(-50%, -52%) scale(1.04); }
+    }
+
+    .hero-location {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+      margin-bottom: 1.6rem;
+      position: relative;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4.5rem, 13vw, 10rem);
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      line-height: 0.88;
+      color: var(--cream);
+      text-transform: uppercase;
+      position: relative;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-name .line-gold {
+      display: block;
+      color: var(--gold);
+      font-weight: 300;
+    }
+
+    .hero-pillars {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 3.2rem;
+      position: relative;
+    }
+
+    .hero-pillars span {
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+
+    .hero-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.55;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold-dim);
+      padding-bottom: 0.3rem;
+      position: relative;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .hero-cta:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .scroll-hint-label {
+      font-size: 0.48rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.25);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+      50%       { opacity: 1;   transform: scaleY(1); }
+    }
+
+    /* ── SHARED ELEMENTS ── */
+    .gold-line {
+      width: 56px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-size: 0.56rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.9rem;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 110px 5%;
+      text-align: center;
+    }
+
+    .about-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.85;
+      color: var(--cream-dim);
+      margin: 2rem 0;
+    }
+
+    .about-text strong {
+      color: var(--cream);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    /* ── PILLARS ── */
+    .pillars {
+      background: var(--charcoal);
+      padding: 90px 0 100px;
+    }
+
+    .pillars-header {
+      text-align: center;
+      padding: 0 5%;
+      margin-bottom: 5rem;
+    }
+
+    .pillars-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      margin-top: 0.8rem;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    .pillar-card {
+      padding: 3.8rem 2.4rem 3rem;
+      background: var(--black);
+      text-align: center;
+      position: relative;
+      transition: background 0.4s;
+    }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    }
+
+    .pillar-card:hover { background: #0d0c0a; }
+
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      opacity: 0.55;
+      margin-bottom: 1.4rem;
+    }
+
+    .pillar-icon {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      opacity: 0.4;
+      margin-bottom: 1.2rem;
+      line-height: 1;
+    }
+
+    .pillar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      line-height: 2.1;
+      color: var(--cream-dim);
+      margin-bottom: 2.2rem;
+    }
+
+    .pillar-link {
+      display: inline-block;
+      font-size: 0.56rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold-dim);
+      padding-bottom: 0.25rem;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .pillar-link:hover { color: var(--gold-light); border-color: var(--gold); }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      padding: 110px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-moon {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 42%,
+        #f0ece4 0%, #d4cec4 28%, #9a938a 58%, #4a4540 78%, transparent 100%);
+      opacity: 0.055;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      line-height: 0.5;
+      color: var(--gold);
+      opacity: 0.25;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.75;
+      color: var(--cream);
+      max-width: 820px;
+      margin: 0 auto 1.6rem;
+      position: relative;
+    }
+
+    .quote-author {
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      position: relative;
+    }
+
+    /* ── CONNECT ── */
+    .connect {
+      background: var(--charcoal);
+      padding: 90px 5% 100px;
+      text-align: center;
+    }
+
+    .connect-header {
+      margin-bottom: 4rem;
+    }
+
+    .connect-grid {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .connect-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .connect-item:hover { transform: translateY(-5px); }
+
+    .connect-circle {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--gold);
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .connect-item:hover .connect-circle {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .connect-label {
+      font-size: 0.54rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 5%;
+      text-align: center;
+      border-top: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    footer p {
+      font-size: 0.52rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.18);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 5%; }
+      .nav-links { display: none; }
+
+      .moon { width: 300px; height: 300px; }
+
+      .about { padding: 70px 5%; }
+
+      .pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 2px;
+        padding: 0;
+      }
+
+      .pillar-card { padding: 3rem 2rem 2.5rem; }
+
+      .quote-section { padding: 70px 5%; }
+
+      .connect-grid { gap: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Mari Nalu</a>
+    <ul class="nav-links">
+      <li><a href="#art">Art</a></li>
+      <li><a href="#perfume">Perfume</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="moon"></div>
+    <p class="hero-location">Miami &nbsp;·&nbsp; Los Angeles &nbsp;·&nbsp; Hawaii</p>
+    <h1 class="hero-name">
+      Mari<span class="line-gold">Nalu</span>
+    </h1>
+    <div class="hero-pillars">
+      <span>Art</span>
+      <div class="hero-dot"></div>
+      <span>Perfume</span>
+      <div class="hero-dot"></div>
+      <span>Music</span>
+    </div>
+    <a href="#about" class="hero-cta">Explore her world</a>
+    <div class="scroll-hint">
+      <span class="scroll-hint-label">Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="gold-line"></div>
+      <p class="section-tag" style="margin-top:2.5rem;">About</p>
+      <p class="about-text">
+        Born between the <strong>ocean and the moon</strong>, Mari Nalu creates worlds —
+        on canvas, in scent, and in song. Her work is a conversation between
+        <strong>light and shadow</strong>, feminine power and raw expression,
+        the visible and the deeply felt.
+      </p>
+      <div class="gold-line"></div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <div class="pillars-header">
+      <p class="section-tag">Her World</p>
+      <h2 class="pillars-title">Three Forms of Expression</h2>
+    </div>
+    <div class="pillars-grid">
+
+      <div class="pillar-card" id="art">
+        <p class="pillar-num">I</p>
+        <div class="pillar-icon">✦</div>
+        <h3 class="pillar-title">Art</h3>
+        <p class="pillar-desc">
+          Original paintings where gold meets black.<br>
+          Feminine strength rendered in brushstroke and leaf.<br>
+          Shown in galleries across the United States.
+        </p>
+        <a href="https://marinalu.art" target="_blank" class="pillar-link">View the gallery →</a>
+      </div>
+
+      <div class="pillar-card" id="perfume">
+        <p class="pillar-num">II</p>
+        <div class="pillar-icon">◈</div>
+        <h3 class="pillar-title">Perfume</h3>
+        <p class="pillar-desc">
+          Luxury fragrances crafted with intention.<br>
+          Each scent a mood — a memory — a universe.<br>
+          The Mari Nalu collection.
+        </p>
+        <a href="https://marinaluperfume.com" target="_blank" class="pillar-link">Discover the scents →</a>
+      </div>
+
+      <div class="pillar-card" id="music">
+        <p class="pillar-num">III</p>
+        <div class="pillar-icon">♪</div>
+        <h3 class="pillar-title">Music</h3>
+        <p class="pillar-desc">
+          Songs written from the soul.<br>
+          Emotion distilled into melody.<br>
+          Hear what cannot be painted or bottled.
+        </p>
+        <a href="https://instagram.com/mari_nalu_" target="_blank" class="pillar-link">Follow her journey →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <div class="quote-moon"></div>
+    <div class="quote-mark">"</div>
+    <p class="quote-text">
+      I bring gold into my work to bring its inner power alive —
+      gold is not decorative, it is a medium that screams luminosity,
+      women's power, and strength within a space.
+    </p>
+    <p class="quote-author">— Mari Nalu</p>
+  </section>
+
+  <!-- CONNECT -->
+  <section class="connect" id="connect">
+    <div class="connect-header">
+      <div class="gold-line"></div>
+      <p class="section-tag" style="margin-top:2.5rem;">Connect</p>
+      <h2 class="pillars-title" style="margin-top:0.5rem;">Find Her Here</h2>
+    </div>
+    <div class="connect-grid">
+      <a href="https://instagram.com/mari_nalu_" target="_blank" class="connect-item">
+        <div class="connect-circle">IG</div>
+        <span class="connect-label">Instagram</span>
+      </a>
+      <a href="https://marinalu.art" target="_blank" class="connect-item">
+        <div class="connect-circle">✦</div>
+        <span class="connect-label">Art</span>
+      </a>
+      <a href="https://marinaluperfume.com" target="_blank" class="connect-item">
+        <div class="connect-circle">◈</div>
+        <span class="connect-label">Perfume</span>
+      </a>
+    </div>
+    <div style="margin-top:3.5rem;">
+      <div class="gold-line"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Mari Nalu &nbsp;·&nbsp; All rights reserved</p>
+  </footer>
+
+</body>
+</html>
