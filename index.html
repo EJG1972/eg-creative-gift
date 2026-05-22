@@ -346,14 +346,20 @@
 
     .home-link {
       display: inline-block;
-      font-size: 0.56rem;
-      letter-spacing: 0.2em;
+      margin-top: 1.2rem;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--cream-dim);
+      padding: 0.65rem 1.4rem;
+      border-radius: 50px;
       text-decoration: none;
-      transition: color 0.3s;
+      transition: background 0.3s;
     }
-    .home-link:hover { color: var(--gold); }
+    .home-link:hover { background: var(--gold-light); }
 
     .pillar-link {
       display: inline-block;
@@ -574,6 +580,8 @@
         the visible and the deeply felt.
       </p>
       <div class="gold-line"></div>
+      <br>
+      <a href="#" class="home-link">↑ Mari Nalu Home</a>
     </div>
   </section>
 
@@ -595,8 +603,7 @@
           Shown in galleries across the United States.
         </p>
         <a href="https://marinalu.art" target="_blank" class="pillar-link">View the gallery →</a>
-        <br><br>
-        <a href="#" class="home-link">↑ Home</a>
+        <a href="#" class="home-link">↑ Mari Nalu Home</a>
       </div>
 
       <div class="pillar-card" id="perfume">
@@ -609,8 +616,7 @@
           The Mari Nalu collection.
         </p>
         <a href="https://marinaluperfume.com" target="_blank" class="pillar-link">Discover the scents →</a>
-        <br><br>
-        <a href="#" class="home-link">↑ Home</a>
+        <a href="#" class="home-link">↑ Mari Nalu Home</a>
       </div>
 
       <div class="pillar-card" id="music">
@@ -623,8 +629,7 @@
           Hear what cannot be painted or bottled.
         </p>
         <a href="https://instagram.com/mari_nalu_" target="_blank" class="pillar-link">Follow her journey →</a>
-        <br><br>
-        <a href="#" class="home-link">↑ Home</a>
+        <a href="#" class="home-link">↑ Mari Nalu Home</a>
       </div>
 
     </div>
@@ -640,6 +645,8 @@
       women's power, and strength within a space.
     </p>
     <p class="quote-author">— Mari Nalu</p>
+    <br><br>
+    <a href="#" class="home-link">↑ Mari Nalu Home</a>
   </section>
 
   <!-- CONNECT -->
@@ -673,38 +680,6 @@
     <p>© 2026 Mari Nalu &nbsp;·&nbsp; All rights reserved</p>
   </footer>
 
-  <!-- HOME BUTTON — always visible on every section -->
-  <button id="homeBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Go to Home">
-    &#8593; Mari Nalu
-  </button>
-
-  <style>
-    #homeBtn {
-      position: fixed;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--gold);
-      border: none;
-      color: var(--black);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      border-radius: 50px;
-      cursor: pointer;
-      z-index: 9000;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 24px rgba(201,168,76,0.5);
-      white-space: nowrap;
-      transition: background 0.3s;
-    }
-    #homeBtn:hover { background: var(--gold-light); }
-  </style>
 
 </body>
 </html>
